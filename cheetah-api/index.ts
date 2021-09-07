@@ -121,7 +121,6 @@ createServer(async (req : Request, res : ServerResponse) => {
     pathName = pathName.replace(pathName.substring(pathName.indexOf("/") != -1 ? pathName.indexOf("/") : pathName.length, pathName.length), "")
 
     let firstvarindex = firstVar.indexOf(pathName);
-    console.log(firstVar)
     if (index != -1){
         let controller = new controllers[index]()
         for await (const chunk of req){
