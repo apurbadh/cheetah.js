@@ -1,6 +1,6 @@
 import { createServer, IncomingMessage, ServerResponse } from "http";
 import * as urlU from "url"
-import { readFileSync } from "fs"
+import { readFileSync, existsSync } from "fs"
 import * as querystring from "querystring"
 import * as ejs from "ejs"
 
@@ -151,7 +151,11 @@ createServer(async (req : Request, res : ServerResponse) => {
         }
         controller.pathParameters = obj
         checkMethod(controller, req, res)
+    }else if (existsSync((__dirname + "/../public/" + neededLater))){
+        let data = readFileSync(__dirname + "/../public/" + neededLater, "utf-8")
+        res.write(data)
     }
+
     res.end()
     
 }).listen(8080)
