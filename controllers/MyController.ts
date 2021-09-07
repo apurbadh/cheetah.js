@@ -4,7 +4,7 @@ import {Controller, Request, Response} from "../cheetah-api"
 export default class MyController extends Controller{
 
     get(req : Request, res : Response){
-
+        console.log(this.pathParameters)
     }
 
     post(req : Request, res : Response){

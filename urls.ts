@@ -9,5 +9,5 @@ url("/", HomeController)
 url("/user", UserController)
 url('/test', TestController)
 url("/amir", AmirController)
-extendedURL("/user/{id}",MyController )
+extendedURL("/user/{id}/i/{a}/p/{b}/q/{c}",MyController )
 

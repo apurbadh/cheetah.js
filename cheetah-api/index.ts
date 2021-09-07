@@ -118,8 +118,8 @@ createServer(async (req : Request, res : ServerResponse) => {
     const buffers = [];
     let index = urls.indexOf(pathName)
     pathName = pathName.substring(1, pathName.length)
+    let neededLater : string = pathName
     pathName = pathName.replace(pathName.substring(pathName.indexOf("/") != -1 ? pathName.indexOf("/") : pathName.length, pathName.length), "")
-
     let firstvarindex = firstVar.indexOf(pathName);
     if (index != -1){
         let controller = new controllers[index]()
@@ -133,7 +133,23 @@ createServer(async (req : Request, res : ServerResponse) => {
         checkMethod(controller, req, res)
 
     }else if (firstvarindex != -1){
+        let obj : Object ={}
         let controller = new exControllers[firstvarindex]()
+        neededLater += "/"
+        for (let i = 0; i < extendedVarNames[firstvarindex].length; i++){
+            let value = neededLater.replace(neededLater.substring(0, neededLater.indexOf("/")) + "/", "")
+            if (i != 0){
+                value = value.replace(value.substring(0, value.indexOf('/') + 1), "")
+            }
+            value = value.substring(0, value.indexOf('/'))
+            //@ts-ignore
+            obj[extendedVarNames[firstvarindex][i]] = value
+            for (let j = 0; j < i; j++){
+                neededLater = neededLater.replace('/', "")
+            }
+            neededLater = neededLater.replace(neededLater.substring(0, neededLater.indexOf("/")), "")
+        }
+        controller.pathParameters = obj
         checkMethod(controller, req, res)
     }
     res.end()
