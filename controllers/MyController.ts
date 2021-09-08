@@ -1,12 +1,12 @@
 import {Controller, Request, Response} from "../cheetah-api"
 import {user} from "../models/UserModel"
+import { dbOperators } from "../cheetah-api/database"
+
 export default class MyController extends Controller{
 
-    get(req : Request, res : Response){
-        user.create({
-            name : "apurba",
-            email : "apurba4790@gmail.com",
-            phone: 9841212827
+    async get(req : Request, res : Response){
+        user.getAll({name:dbOperators.EQUAL+"apurba"}, (err : any, st : any) => {
+            console.log(st)
         })
     }
 

@@ -13,4 +13,3 @@ class UserModel extends Model{
 }
 
 export const user = new UserModel("user")
-user.migrate()

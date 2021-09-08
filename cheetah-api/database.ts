@@ -14,10 +14,11 @@ export const specialTypes = {
     "Unique" : "UNIQUE"
 }
 export const dbOperators = {
-    AND : "AND",
-    OR : "OR",
-    NOT : "NOT",
-    LIKE : "LIKE"
+    AND : " AND '",
+    OR : " OR '",
+    NOT : " != '",
+    LIKE : " LIKE '",
+    EQUAL : " = '"
 }
 export class Model{
     setValues() : Object{return {}}
@@ -58,8 +59,35 @@ export class Model{
         query += ");"
         db.run(query)
     }
-    async get(obj : Object, operators = []){
-        let query = `SELECT * FROM `
-        db.get(query)
+    getOne(obj : Object, callback : Function){
+        let query = `SELECT * FROM ${this.table_name} WHERE `
+        let keys : string[] = Object.keys(obj);
+        let value : any;
+        keys.forEach((key) => {
+            //@ts-ignore
+            value = obj[key]
+            query += key + `${value}'`
+        })
+        query += ";"
+        let data;
+        data = db.get(query, callback)
+        return data
     }
+
+    getAll(obj : Object, callback : Function){
+        let query = `SELECT * FROM ${this.table_name} WHERE `
+        let keys : string[] = Object.keys(obj);
+        let value : any;
+        keys.forEach((key) => {
+            //@ts-ignore
+            value = obj[key]
+            query += key + `${value}'`
+        })
+        query += ";"
+        let data;
+        console.log(query)
+        data = db.all(query, callback)
+        return data
+    }
+    
 }
