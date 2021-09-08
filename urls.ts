@@ -4,10 +4,10 @@ import UserController from "./controllers/UserController"
 import TestController from "./controllers/TestController"
 import AmirController from "./controllers/AmirController"
 import MyController from "./controllers/MyController"
+import "./models/UserModel"
 
 url("/", HomeController)
 url("/user", UserController)
 url('/test', TestController)
 url("/amir", AmirController)
-extendedURL("/user/{id}/i/{a}/p/{b}/q/{c}",MyController )
-
+url('/my', MyController)

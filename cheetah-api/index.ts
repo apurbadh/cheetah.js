@@ -154,6 +154,8 @@ createServer(async (req : Request, res : ServerResponse) => {
     }else if (existsSync((__dirname + "/../public/" + neededLater))){
         let data = readFileSync(__dirname + "/../public/" + neededLater, "utf-8")
         res.write(data)
+    }else{
+        res.statusCode = 404
     }
 
     res.end()
