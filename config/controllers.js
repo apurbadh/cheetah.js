@@ -2,7 +2,7 @@ const fs = require("fs")
 
 const name = process.argv[2]
 const createController = () => {
-    const our_str = `import {Controller, Request, Response, render} from "cheetah-api"
+    const our_str = `import {Controller, Request, Response, render} from "@apurbadh/cheetah"
 
 export default class ${name} extends Controller{
 

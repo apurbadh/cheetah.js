@@ -13,4 +13,5 @@ class UserModel extends Model{
 }
 
 const user = new UserModel("user")
+user.migrate()
 export default user;

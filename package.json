@@ -8,7 +8,7 @@
     "start": "node urls.js",
     "dev": "nodemon urls.ts",
     "build":"tsc .",
-    "create-controller": "node config/controller.js",
+    "create-controller": "node config/controllers.js",
     "create-model": "node config/model.js",
     "migrate": "node config/model.js"
   },

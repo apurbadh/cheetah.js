@@ -1,32 +1,22 @@
 const fs = require("fs")
 
 const name = process.argv[2]
+const nameLowerd = name.toLowerCase()
 const createModel = () => {
-    const our_str = `import { Model, dbTypes, specialTypes } from "cheetah/database";
+    const our_str = `import { Model, dbTypes, specialTypes } from "@apurbadh/cheetah/database";
 
 class ${name} extends Model{
+  
+    setValues(){
+        return {
 
-    get(req : Request, res : Response){
-        
-    }
-
-    post(req : Request, res : Response){
-        
-    }
-
-    put(req : Request, res : Response){
-
-    }
-
-    delete(req : Request, res : Response){
-
-    }
-
-    patch(req : Request, res : Response){
-
+        }
     }
     
 }
+const ${nameLowerd} = new ${name}("${nameLowerd}")
+${nameLowerd}.migrate()
+export default ${nameLowerd};
 
 `   
     fs.writeFileSync(__dirname + "/../models/" + name + ".ts", our_str)
