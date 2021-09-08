@@ -1,4 +1,4 @@
-import {Controller, Request, Response, render} from "cheetah-api"
+import {Controller, Request, Response, render} from "@apurbadh/cheetah"
 
 export default class HomeController extends Controller{
 

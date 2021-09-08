@@ -1,4 +1,4 @@
-import { Model, dbTypes, specialTypes } from "cheetah/database";
+import { Model, dbTypes, specialTypes } from "@apurbadh/cheetah/database";
 
 class UserModel extends Model{
 
