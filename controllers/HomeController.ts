@@ -1,10 +1,10 @@
-import {Controller, Request, Response, render} from "../cheetah-api"
+import {Controller, Request, Response, render} from "cheetah-api"
 
 export default class HomeController extends Controller{
 
 
     get(req : Request, res : Response){
-        render(res, "index.ejs", {name:"amir"})
+        render(res, "index.ejs")
     }
 
     post(req : Request, res : Response){

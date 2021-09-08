@@ -1,4 +1,4 @@
-import { Model, dbTypes, specialTypes } from "../cheetah-api/database";
+import { Model, dbTypes, specialTypes } from "cheetah/database";
 
 class UserModel extends Model{
 
@@ -12,4 +12,5 @@ class UserModel extends Model{
     }
 }
 
-export const user = new UserModel("user")
+const user = new UserModel("user")
+export default user;
