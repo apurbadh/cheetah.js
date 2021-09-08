@@ -5,9 +5,7 @@ import { dbOperators } from "../cheetah-api/database"
 export default class MyController extends Controller{
 
     async get(req : Request, res : Response){
-        user.getAll({name:dbOperators.EQUAL+"apurba"}, (err : any, st : any) => {
-            console.log(st)
-        })
+        user.update({name:dbOperators.EQUAL + "apurba"}, {name : "aashutosh"})
     }
 
     post(req : Request, res : Response){

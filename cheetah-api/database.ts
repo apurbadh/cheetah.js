@@ -89,5 +89,34 @@ export class Model{
         data = db.all(query, callback)
         return data
     }
-    
+
+    delete(obj : Object){
+        let query = `DELETE FROM ${this.table_name} WHERE `
+        let keys : string[] = Object.keys(obj);
+        let value : any;
+        keys.forEach((key) => {
+            //@ts-ignore
+            value = obj[key]
+            query += key + `${value}'`
+        })
+        query += ";"
+        let data;
+        data = db.get(query)
+    }
+    update(previous : Object, newData: Object){
+        let query = `UPDATE ${this.table_name} SET `
+        let keys = Object.keys(previous)
+        keys.forEach((key, i) => {
+            //@ts-ignore
+            query += i == keys.length - 1 ? `${key} = '${newData[key]}'` : `${key} = ${newData[key]},`
+        })
+        query += " WHERE "
+        keys.forEach((key, i) => {
+            //@ts-ignore
+            query += i == keys.length - 1 ? `${key}${previous[key]}'` : `${key}${pervious[key]},`
+        })
+        query += ";"
+        db.run(query)
+    }
+
 }
